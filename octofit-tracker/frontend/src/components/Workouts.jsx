@@ -4,9 +4,10 @@ import { fetchApiData } from '../utils/api'
 export default function Workouts() {
   const [workouts, setWorkouts] = useState([])
   const [error, setError] = useState(null)
+  const API_PATH = '/api/workouts/'
 
   useEffect(() => {
-    fetchApiData('workouts', 'workouts')
+    fetchApiData(API_PATH, 'workouts')
       .then(setWorkouts)
       .catch((err) => setError(err.message))
   }, [])

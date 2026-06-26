@@ -4,9 +4,10 @@ import { fetchApiData } from '../utils/api'
 export default function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState([])
   const [error, setError] = useState(null)
+  const API_PATH = '/api/leaderboard/'
 
   useEffect(() => {
-    fetchApiData('leaderboard', 'leaderboard')
+    fetchApiData(API_PATH, 'leaderboard')
       .then(setLeaderboard)
       .catch((err) => setError(err.message))
   }, [])

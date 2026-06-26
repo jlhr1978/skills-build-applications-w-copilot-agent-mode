@@ -4,9 +4,10 @@ import { fetchApiData } from '../utils/api'
 export default function Activities() {
   const [activities, setActivities] = useState([])
   const [error, setError] = useState(null)
+  const API_PATH = '/api/activities/'
 
   useEffect(() => {
-    fetchApiData('activities', 'activities')
+    fetchApiData(API_PATH, 'activities')
       .then(setActivities)
       .catch((err) => setError(err.message))
   }, [])

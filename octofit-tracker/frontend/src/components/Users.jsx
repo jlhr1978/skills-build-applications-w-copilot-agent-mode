@@ -4,9 +4,10 @@ import { fetchApiData } from '../utils/api'
 export default function Users() {
   const [users, setUsers] = useState([])
   const [error, setError] = useState(null)
+  const API_PATH = '/api/users/'
 
   useEffect(() => {
-    fetchApiData('users', 'users')
+    fetchApiData(API_PATH, 'users')
       .then(setUsers)
       .catch((err) => setError(err.message))
   }, [])

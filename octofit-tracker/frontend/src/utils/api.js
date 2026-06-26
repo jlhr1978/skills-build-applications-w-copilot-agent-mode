@@ -1,8 +1,12 @@
 const CODESPACE_NAME = import.meta.env.VITE_CODESPACE_NAME
 
 export const API_BASE_URL = CODESPACE_NAME
-  ? `https://${CODESPACE_NAME}-8000.app.github.dev/api`
-  : 'http://localhost:8000/api'
+  ? `https://${CODESPACE_NAME}-8000.app.github.dev`
+  : 'http://localhost:8000'
+
+function normalizePath(path) {
+  return path.startsWith('/') ? path : `/${path}`
+}
 
 function normalizeResponse(data, key) {
   if (!data) {
@@ -34,7 +38,7 @@ function normalizeResponse(data, key) {
 }
 
 export async function fetchApiData(path, responseKey) {
-  const url = `${API_BASE_URL}/${path}`
+  const url = `${API_BASE_URL}${normalizePath(path)}`
   const response = await fetch(url)
   if (!response.ok) {
     throw new Error(`Failed to fetch ${path}: ${response.status} ${response.statusText}`)

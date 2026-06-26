@@ -4,9 +4,10 @@ import { fetchApiData } from '../utils/api'
 export default function Teams() {
   const [teams, setTeams] = useState([])
   const [error, setError] = useState(null)
+  const API_PATH = '/api/teams/'
 
   useEffect(() => {
-    fetchApiData('teams', 'teams')
+    fetchApiData(API_PATH, 'teams')
       .then(setTeams)
       .catch((err) => setError(err.message))
   }, [])
