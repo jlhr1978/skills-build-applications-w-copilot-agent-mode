@@ -14,7 +14,7 @@ app.use(express.json())
 // Codespaces-aware API URL
 const CODESPACE = process.env.CODESPACE_NAME
 const API_BASE = CODESPACE
-  ? `https://${CODESPACE}-${PORT}.githubpreview.dev`
+  ? `https://${CODESPACE}-${PORT}.app.github.dev`
   : `http://localhost:${PORT}`
 
 app.get('/', (_req, res) => res.json({ message: 'OctoFit Tracker API', apiBase: API_BASE }))
