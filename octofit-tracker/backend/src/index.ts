@@ -1,12 +1,11 @@
 import express from 'express'
-import mongoose from 'mongoose'
 import usersRouter from './routes/users'
 import teamsRouter from './routes/teams'
 import activitiesRouter from './routes/activities'
 import leaderboardRouter from './routes/leaderboard'
 import workoutsRouter from './routes/workouts'
+import { connectDB } from './config/database'
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/octofit_db'
 const PORT = process.env.PORT ? Number(process.env.PORT) : 8000
 
 const app = express()
@@ -29,8 +28,7 @@ app.use('/api/workouts', workoutsRouter)
 
 async function start() {
   try {
-    await mongoose.connect(MONGO_URI)
-    console.log('Connected to MongoDB', MONGO_URI)
+    await connectDB()
     app.listen(PORT, () => console.log('Server listening on port', PORT, 'API base:', API_BASE))
   } catch (err) {
     console.error('Failed to start server', err)
