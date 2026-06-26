@@ -9,7 +9,7 @@ import { connectDB } from './config/database'
 const PORT = process.env.PORT ? Number(process.env.PORT) : 8000
 const CODESPACE = process.env.CODESPACE_NAME
 const API_BASE = CODESPACE
-  ? `https://${CODESPACE}-${PORT}.app.github.dev`
+  ? `https://${CODESPACE}-8000.app.github.dev`
   : `http://localhost:${PORT}`
 
 const app = express()
